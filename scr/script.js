@@ -8,7 +8,7 @@ const resizevar = 80;
 document.getElementById('main').innerHTML = 'hello'
 
 async function collectRender() {
-    const renderReponse = await fetch(`/render/v2`, { method: 'GET'});
+    const renderReponse = await fetch(`/render/v6`, { method: 'GET'});
     const responseData = await renderReponse.json();
     imageRender(responseData);
 
@@ -17,8 +17,6 @@ async function collectRender() {
     if (responseData?.timeTook) document.getElementById('time').innerText=`${responseData.timeTook}ms`
     return console.log('fetched image')
 }
-
-
 
 function imageRender(responseData) {
     canvas.width=responseData.sizeX;
@@ -40,4 +38,14 @@ function draw(xCoord, yCoord, ColourRGB) {
 
     // ctxBig.fillStyle = ColourRGB
     // ctxBig.fillRect(xCoord*resizevar, yCoord*resizevar, 1*resizevar, 1*resizevar);
+}
+
+
+// SAVE YOUR CANVAS
+function saveCanvas() {
+    var canvas = document.getElementById('canvas');
+    var dataURL = canvas.toDataURL();
+
+    var win = window.open();
+    win.document.write(`<iframe src="${dataURL}" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>`);
 }
