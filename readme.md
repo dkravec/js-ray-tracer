@@ -20,5 +20,9 @@ Created by Daniel Kravec, on July 9th, 2022
 
 Problems, render can run out of memory to render. (maybe use c# instead for calucations)
 
+### v1.0 (4.2022.07.11)
+- Created v9, renders objects. Options for solid (default), outline, and thickness.
+- Added examples for v7-9.
+
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/

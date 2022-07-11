@@ -14,9 +14,11 @@ async function v7() {
 
         r=getColour(colourNumber());
         b=getColour(r*colourNumber());
+        
         // r=x
         // g=x
         // b=x
+
         for (let y=0; y<returnData.sizeY; y++) {
             g=getColour((b/x+y*x+y/r)/4)
 
@@ -26,7 +28,6 @@ async function v7() {
                     // console.log('ok')
                     returnData.image.push({x, y, colour: `rgb(${r}, ${g}, ${b})`});
                 };
-
             };
         };
     };
