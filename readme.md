@@ -24,5 +24,10 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 - Created v9, renders objects. Options for solid (default), outline, and thickness.
 - Added examples for v7-9.
 
+### v1.0 (5.2022.07.12)
+- Created v10, a copy of v9, but with a light source.
+- Light source in v10 changes colours.
+- Problem: Light source size is not correct.
+
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
