@@ -29,5 +29,9 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 - Light source in v10 changes colours.
 - Problem: Light source size is not correct.
 
+### v1.0 (6.2022.07.13)
+- Fixed proper light source size for v10.
+- v11 is a copy of v5 but ith a large light sources.
+
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/

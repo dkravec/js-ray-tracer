@@ -8,7 +8,7 @@ const resizevar = 80;
 document.getElementById('main').innerHTML = 'hello'
 
 async function collectRender() {
-    const renderReponse = await fetch(`/render/v10`, { method: 'GET'});
+    const renderReponse = await fetch(`/render/v11`, { method: 'GET'});
     const responseData = await renderReponse.json();
     imageRender(responseData);
 
