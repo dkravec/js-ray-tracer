@@ -12,6 +12,7 @@ router.get('/:type', async (req, res) => {
         if (option.name == type) data = await option.func();
     };
    
+    if (!data) res.status(404).send({ 'error' : `Unknown render type ${type}.`})
     return res.status(200).send(data);
 });
 

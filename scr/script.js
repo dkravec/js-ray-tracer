@@ -8,7 +8,7 @@ const resizevar = 80;
 document.getElementById('main').innerHTML = 'hello'
 
 async function collectRender() {
-    const renderReponse = await fetch(`/render/v12`, { method: 'GET'});
+    const renderReponse = await fetch(`/render/v13`, { method: 'GET'});
     const responseData = await renderReponse.json();
     imageRender(responseData);
 
@@ -33,6 +33,8 @@ function imageRender(responseData) {
 }
 
 function draw(xCoord, yCoord, ColourRGB) {
+    console.log(ColourRGB)
+
     ctx.fillStyle = ColourRGB;
     ctx.fillRect(xCoord, yCoord, 1, 1);
 

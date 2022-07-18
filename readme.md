@@ -34,7 +34,10 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 - v11 is a copy of v6 but with large light sources.
 
 ### v1.0 (7.2022.07.16)
-- v11 is a copy of v5 but with large light sources.
+- v12 is a copy of v5 but with large light sources.
+
+### v1.0 (8.2022.07.17)
+- v12 is similar to v12, but now has a new light source checker.
 
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
