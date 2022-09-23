@@ -4,6 +4,8 @@ const cors = require('cors');
 const PORT = 3005;
 const app = express();
 const render = require('./render')
+const options = require('./options')
+
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
@@ -26,6 +28,7 @@ app.get('/style.css', (req, res) => {
 })
 
 app.use('/render', render);
+app.use('/options', options);
 
 const server = http.createServer(app);
 

@@ -27,5 +27,6 @@ module.exports = () => {
 
     readCommands('./');
 
+    data.table.sort((a,b) => a.name.replace("v","") - b.name.replace("v",""))
     return data.table;
 };
