@@ -55,6 +55,11 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
     - can render mutiple circles
     - includes the cubes from v9
 
+### v1.0 (11.2022.09.24)
+- Created v16, evolved from v15
+    - now lets you add lights to the scene. (from v10)
+    - all objects are now in a single array, and program loops over and knows which type of object it is.
+- Added examples for v15, and v16
 
 -- ideas
 - have a websocket where it can render every 10 seconds?
