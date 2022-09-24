@@ -49,6 +49,13 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
     - added a form dropdown to select all the versions you want.
     - Cleaned up code a little.
 
+### v1.0 (10.2022.09.23)
+- Cleaned V9
+- Created v15
+    - can render mutiple circles
+    - includes the cubes from v9
+
+
 -- ideas
 - have a websocket where it can render every 10 seconds?
 - put the ws inside the function

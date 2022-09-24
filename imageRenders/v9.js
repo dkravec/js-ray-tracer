@@ -88,14 +88,13 @@ async function v9() {
                     returnData.image.push({x: obj.x+obj.width, y: obj.y+h, colour: obj.colour});
                 }
             }
-        }
-       else {
-        for (let w=0; w<obj.width; w++) {
-            for (let h=0; h<obj.height; h++) {
-                returnData.image.push({x: obj.x+w, y: obj.y+h, colour: obj.colour});
+        } else {
+            for (let w=0; w<obj.width; w++) {
+                for (let h=0; h<obj.height; h++) {
+                    returnData.image.push({x: obj.x+w, y: obj.y+h, colour: obj.colour});
+                }
             }
         }
-       }
     }
 
 
