@@ -7,6 +7,27 @@ const resizevar = 80;
 var currentOption = "v11"
 
 onLoad();
+var options = {
+    "objects" : [
+        "objType",
+        "colourSelectType",
+            "indivual",
+            "merged",
+            "hex",
+        "colour",
+        "style",
+            "outline",
+            "thickness",
+                "outline",
+        "height",
+        "width",
+        "x",
+        "y",
+        "size"
+    ],
+    "canvas_y" : 1080,
+    "canvas_x" : 1080
+}
 
 async function onLoad(){
     await getOptions();
@@ -22,7 +43,7 @@ async function getOptions() {
 
 function drawOptions(response) {
     var ele = `
-        <h1>Options</h1>
+        <h3>Options</h3>
         <select onchange="changeCurrent()" id="select_version_form">
     `;
 
@@ -41,8 +62,23 @@ function changeCurrent() {
     document.getElementById("rendering").innerText=input;
 };
 
+function addOptions() {
+    document.getElementById("extraOptions")=`
+        <div>
+            <p>Current options</p>
+            <p>add</p>
+            <select onchange="AddNew">
+            
+            </select>
+        </div>
+    `
+}
+function removeFunctions() {
+    document.getElementById("extraOptions")=``
+}
+
 async function collectRender() {
-    const renderReponse = await fetch(`/render/${currentOption}`, { method: 'GET'});
+    const renderReponse = await fetch(`/render/${currentOption}`, { method: 'POST'});
     const responseData = await renderReponse.json();
     imageRender(responseData);
 

@@ -65,6 +65,17 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 - have a websocket where it can render every 10 seconds?
 - put the ws inside the function
 
+### v1.0 (12.2022.10.12)
+- Created v17, copy of v16.
+- Created a system for saving pixels in processing, cut render time from 5000ms -> 100ms.
+- Now tells you which function is running in console, ex: "loading" -> "loading: v16".
+- Changed Options header to h3, from h1.
+- Renders are now a post, instead of a get - lets body be sent with requests.
+- Started an options panel (in notes/design).
+    - created a options varible, where all options will be stored.
+    - eventually will be able to have a dropdown with different objects.
+
+
 
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
