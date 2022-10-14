@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
     const allOptions = []
 
     for (const option of Info) {
-        allOptions.push({name: option.name, render: option.func})
+        allOptions.push({name: option.name, render: option.func, options: option.options? option.options : null})
     };
    
     var data = {

@@ -41,7 +41,7 @@ function renderCircle() {
         }
         arr.push(newObj)
         // if (thickness)
-        console.log(`top: ${top}, left: ${left}`)
+        // console.log(`top: ${top}, left: ${left}`)
     }
     return arr
 }

@@ -1,4 +1,4 @@
-async function v17(data) {
+async function v18(data) {
     const startTime = checktime();
 
     returnData = {
@@ -22,12 +22,12 @@ async function v17(data) {
             size: 200, 
             x: 60, 
         }, { 
-        //     objType: "circle",
-        //     number: 200,
-        //     size: 30,
-        //     x: 80,
-        //     y: 90,
-        // }, {
+            objType: "circle",
+            number: 200,
+            size: 30,
+            x: 80,
+            y: 90,
+        }, {
             objType: "cube",
             x: 2,
             y: 5,
@@ -37,7 +37,7 @@ async function v17(data) {
         }, {
             objType: "cube",
             x: 56,
-            y: 24,
+            y: 35,
             width: 53,
             height: 25,
             colour: `rgb(245, 15, 40)`
@@ -54,25 +54,43 @@ async function v17(data) {
             objType: "cube",
             x: 20,
             y: 60,
-            width: 60,
-            height: 70,
+            width: 40,
+            height: 60,
+            // thickness: 1,
             style: "outline",
             colour: `rgb(201, 100, 128)`
         }, {
             objType: "light",
             x: 10,
             y: 24,
-            radius: 60,
+            radius: 100,
             colour: {
                 r: colourNumber(),
                 g: colourNumber(),
                 b: colourNumber()
             }
+        // }, {
+        //     objType: "light",
+        //     x: 10,
+        //     y: 24,
+        //     radius: 60,
+        //     colour: {
+        //         r: colourNumber(),
+        //         g: colourNumber(),
+        //         b: colourNumber()
+        //     }
+        // }, {
+        //     objType: "light",
+        //     x: 120,
+        //     y: 300,
+        //     radius: 300,
+        //     colour: {
+        //         r: colourNumber(),
+        //         g: colourNumber(),
+        //         b: colourNumber()
+        //     }
         }, {
-            objType: "light",
-            x: 120,
-            y: 300,
-            radius: 300,
+            objType: "background",
             colour: {
                 r: colourNumber(),
                 g: colourNumber(),
@@ -140,8 +158,143 @@ async function v17(data) {
     returnData.timeTook = `${finishTime - startTime}`;
     return returnData;
 };
+/*
+case "background":
+    const backgroundArr = renderBackground(scnObj, returnData);
+    returnData.image = returnData.image.concat(backgroundArr);
+    for (const pix of backgroundArr) {
+        returnData.imageNew[`${pix.x}_${pix.y}`] = pix
+    }
+    break;
+*/
 
-module.exports={v17};
+const options = {
+    mainOptions: [
+        {
+            name: "sizeX",
+            type: "number",
+        }, {
+            name: "sizeY",
+            type: "number",
+        }
+    ],
+    sceneObjects: [
+        {
+            "objType": "circle",
+            "options" : [
+                {
+                    "name": "number",
+                    "type": "number",
+                }, {
+                    "name": "size",
+                    "type": "number",
+                }, {
+                    "name": "x",
+                    "type": "number",
+                }, {
+                    "name": "y",
+                    "type": "number",
+
+                }, {
+                    "name": "r",
+                    "type": "number",
+                }, {
+                    "name": "colour",
+                    "type": "colourType",
+                }, {
+                    "name": "colourType",
+                    "type": "string",
+                    "options": [
+                        {
+                            "name" : "RGB_Merged",
+                            "type" : "string",
+                            "example" : "rgb(255, 255, 255)"
+                        }, {
+                            "name" : "RGB_Separate",
+                            "type" : "obj",
+                            "example" : {
+                                "r": 255,
+                                "g": 255,
+                                "b": 255
+                            },
+                            "options" : [
+                                {
+                                    "name" : "r",
+                                    "type" : "number",
+                                    "min_value" : 0,
+                                    "max_value" : 255,
+                                }, {
+                                    "name" : "g",
+                                    "type" : "number",
+                                    "min_value" : 0,
+                                    "max_value" : 255,
+                                }, {
+                                    "name" : "b",
+                                    "type" : "number",
+                                    "min_value" : 0,
+                                    "max_value" : 255,
+                                }
+                            ]
+                        }, {
+                            "name" : "HEX",
+                            "type" : "string",
+                            "example" : "#FFFFFF"
+                        }
+                    ]
+                }
+            ]
+        }, {
+            "objType": "cube",
+            "options" : [
+                {
+                    "name": "x",
+                    "type": "number",
+                }, {
+                    "name": "y",
+                    "type": "number",
+                }, {
+                    "name": "width",
+                    "type": "number",
+                }, {
+                    "name": "height",
+                    "type": "number",
+                }, {
+                    "name": "colour",
+                    "type": "RGB_merged",
+                }, {
+                    "name": "style",
+                    "type": "string",
+                    "possible": [
+                        "fill",
+                        "outline"
+                    ]
+                }, {
+                    "name": "thickness",
+                    "type": "number",
+                }
+            ]
+        }, {
+            "objType": "light",
+            "options" : [
+                {
+                    "name": "x",
+                    "type": "number",
+                }, {
+                    "name": "y",
+                    "type": "number",
+                }, {
+                    "name": "radius",
+                    "type": "number",
+                }, {
+                    "name": "colour",
+                    "type": "RGB_merged",
+                }
+            ]
+        }
+    ]
+}
+
+module.exports={v18, options};
 
 function addLighting(light, image) {
     var change = {
@@ -252,6 +405,22 @@ function renderLight(light) {
     };
     return currentLightChange;
 }
+
+function renderBackground(background, image) {
+    var backgroundArr = [];
+    const sizeX = image.sizeX
+    const sizeY = image.sizeY
+    for (let x=0; x<sizeX; x++) {
+        for (let y=0; y<sizeY; y++) {
+            if (!image.imageNew[`${x}_${y}`]) backgroundArr.push({
+                x, y,
+                colour: `rgb(${background.colour.r}, ${background.colour.g}, ${background.colour.b})`
+            });
+        };
+    }
+    return backgroundArr;
+}
+
 
 function newColour(lastColour, i) {
     const step1 = lastColour*i;

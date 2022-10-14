@@ -75,7 +75,16 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
     - created a options varible, where all options will be stored.
     - eventually will be able to have a dropdown with different objects.
 
-
+### v1.0 (13.2022.10.13)
+- Commented console logs in v14, a lot quicker.
+- v17 changed way final renders. It now doesnt need to convert imageNew into image.
+- Created v18, copy of v17
+    - with attempts to make a background (not done).
+    - Started creating an options modifier, with all the possible otpions
+        - will place into json file, with standardized numbers.
+- api sends options to frontend.
+- BUGS:
+    - Outline isnt properly doing outside line + is not being caught by light and background.
 
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/

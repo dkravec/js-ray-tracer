@@ -20,7 +20,12 @@ module.exports = () => {
                 const option = require(path.join(__dirname, dir, file));
                 var obj = option;
                 const newname = file.replace('.js','');
-                data.table.push({'name': newname, func: obj[newname]});
+                data.table.push({
+                    'name': newname, 
+                    'func': obj[newname], 
+                    'options': obj.options ? obj.options : null
+                });
+                console.log(data.table)
             };
         };
     };
