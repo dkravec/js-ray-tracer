@@ -85,7 +85,13 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 - api sends options to frontend.
 - BUGS:
     - Outline isnt properly doing outside line + is not being caught by light and background.
-
+### v1.0 (14.2022.10.15)
+- Added v17 and v18 render examples.
+- v18.
+    - uncommentted lights.
+    - fixed renderCube, now isnt missing a pixel.
+    - cube outline now renders right side properly, was pushing to wrong array.
+    - removed extra comments+cleaned code.
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
 

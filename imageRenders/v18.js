@@ -61,34 +61,34 @@ async function v18(data) {
             colour: `rgb(201, 100, 128)`
         }, {
             objType: "light",
-            x: 10,
-            y: 24,
+            x: 14,
+            y: 56,
             radius: 100,
             colour: {
                 r: colourNumber(),
                 g: colourNumber(),
                 b: colourNumber()
             }
-        // }, {
-        //     objType: "light",
-        //     x: 10,
-        //     y: 24,
-        //     radius: 60,
-        //     colour: {
-        //         r: colourNumber(),
-        //         g: colourNumber(),
-        //         b: colourNumber()
-        //     }
-        // }, {
-        //     objType: "light",
-        //     x: 120,
-        //     y: 300,
-        //     radius: 300,
-        //     colour: {
-        //         r: colourNumber(),
-        //         g: colourNumber(),
-        //         b: colourNumber()
-        //     }
+        }, {
+            objType: "light",
+            x: 10,
+            y: 24,
+            radius: 60,
+            colour: {
+                r: colourNumber(),
+                g: colourNumber(),
+                b: colourNumber()
+            }
+        }, {
+            objType: "light",
+            x: 120,
+            y: 300,
+            radius: 300,
+            colour: {
+                r: colourNumber(),
+                g: colourNumber(),
+                b: colourNumber()
+            }
         }, {
             objType: "background",
             colour: {
@@ -116,13 +116,20 @@ async function v18(data) {
                     returnData.imageNew[`${pix.x}_${pix.y}`] = pix
                 }
                 break;
+            case "background":
+                const backgroundArr = renderBackground(scnObj, returnData);
+                returnData.image = returnData.image.concat(backgroundArr);
+                for (const pix of backgroundArr) {
+                    returnData.imageNew[`${pix.x}_${pix.y}`] = pix
+                }
+                break;
             case "light": 
                 const lightArr = renderLight(scnObj);
                 lightingChange = lightingChange.concat(lightArr);
                 break;
             default:
                 break;
-        }
+        };
     };
     
     /*
@@ -138,35 +145,16 @@ async function v18(data) {
 
     // console.log(image)
     for (const newLight of lightingChange) {
-        // console.log(newLight);
         const addLight = addLighting(newLight, returnData.imageNew);
         if (addLight.found) {
-            returnData.imageNew[addLight.pixelIndex].colour = addLight.colour
-        }
-    }
-
-    
-    // returnData.image = []
-    
-    // for (let cime in returnData.imageNew) {
-    //     // console.log(cime)
-    //     const cur = returnData.imageNew[cime];
-    //     returnData.image.push(cur)
-    // }
-    
+            returnData.imageNew[addLight.pixelIndex].colour = addLight.colour;
+        };
+    };
+  
     const finishTime = checktime();
     returnData.timeTook = `${finishTime - startTime}`;
     return returnData;
 };
-/*
-case "background":
-    const backgroundArr = renderBackground(scnObj, returnData);
-    returnData.image = returnData.image.concat(backgroundArr);
-    for (const pix of backgroundArr) {
-        returnData.imageNew[`${pix.x}_${pix.y}`] = pix
-    }
-    break;
-*/
 
 const options = {
     mainOptions: [
@@ -367,23 +355,55 @@ function renderCube(obj) {
         for (let w=0; w<obj.width; w++) {
             if (obj.thickness) {
                 for (let t=0; t<obj.thickness; t++) {
-                    arr.push({x: obj.x+w, y: obj.y+t, colour: obj.colour});
-                    arr.push({x: obj.x+w, y: obj.y+obj.height-t, colour: obj.colour});
+                    arr.push({
+                        x: obj.x+w, 
+                        y: obj.y+t, 
+                        colour: obj.colour
+                    });
+                    arr.push({
+                        x: obj.x+w, 
+                        y: obj.y+obj.height-t,
+                         colour: obj.colour
+                    });
                 };
             } else {
-                arr.push({x: obj.x+w, y: obj.y, colour: obj.colour});
-                arr.push({x: obj.x+w, y: obj.y+obj.height, colour: obj.colour});
+                // top row
+                arr.push({
+                    x: obj.x+w, 
+                    y: obj.y, 
+                    colour: obj.colour
+                });
+                // bottom row
+                arr.push({
+                    x: obj.x+w, 
+                    y: obj.y+obj.height, 
+                    colour: obj.colour
+                });
             };
         };
-        for (let h=0; h<obj.height; h++) {
+        for (let h=0; h<obj.height+1; h++) {
             if (obj.thickness) {
                 for (let t=0; t<obj.thickness; t++) {
-                    arr.push({x: obj.x+t, y: obj.y+h, colour: obj.colour});
-                    arr.push({x: obj.x+obj.width-t, y: obj.y+h, colour: obj.colour});
+                    arr.push({
+                        x: obj.x+t, 
+                        y: obj.y+h, colour: obj.colour
+                    });
+                    arr.push({
+                        x: obj.x+obj.width-t, 
+                        y: obj.y+h, colour: obj.colour
+                    });
                 };
             } else {
-                arr.push({x: obj.x, y: obj.y+h, colour: obj.colour});
-                returnData.image.push({x: obj.x+obj.width, y: obj.y+h, colour: obj.colour});
+                arr.push({
+                    x: obj.x, 
+                    y: obj.y+h, 
+                    colour: obj.colour
+                });
+                arr.push({
+                    x: obj.x+obj.width, 
+                    y: obj.y+h, 
+                    colour: obj.colour
+                });
             };
         };
     } else {
