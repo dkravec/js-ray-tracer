@@ -1,0 +1,168 @@
+{
+    "versions" : [
+        "1.0"
+    ],
+    "1.0" : {
+        "main_options" : [
+            {
+                "name" : "sizeX",
+                "type" : "number"
+            }, {
+                "name" : "sizeX",
+                "type" : "number"
+            }
+        ],
+        "possible" : [
+            "circle",
+            "square",
+            "light",
+            "background"
+        ],
+        "circle" : {
+            "objType": "circle",
+            "options" : [
+                {
+                    "name": "number",
+                    "type": "number"
+                }, {
+                    "name": "size",
+                    "type": "number"
+                }, {
+                    "name": "x",
+                    "type": "number"
+                }, {
+                    "name": "y",
+                    "type": "number"
+
+                }, {
+                    "name": "r",
+                    "type": "number"
+                }, {
+                    "name": "colour",
+                    "type": "colourType"
+                }, {
+                    "name": "colourType",
+                    "type": "string",
+                    "options": [
+                        {
+                            "name" : "RGB_Merged",
+                            "type" : "string",
+                            "example" : "rgb(255, 255, 255)"
+                        }, {
+                            "name" : "RGB_Separate",
+                            "type" : "obj",
+                            "example" : {
+                                "r": 255,
+                                "g": 255,
+                                "b": 255
+                            },
+                            "options" : [
+                                {
+                                    "name" : "r",
+                                    "type" : "number",
+                                    "min_value" : 0,
+                                    "max_value" : 255
+                                }, {
+                                    "name" : "g",
+                                    "type" : "number",
+                                    "min_value" : 0,
+                                    "max_value" : 255
+                                }, {
+                                    "name" : "b",
+                                    "type" : "number",
+                                    "min_value" : 0,
+                                    "max_value" : 255
+                                }
+                            ]
+                        }, {
+                            "name" : "HEX",
+                            "type" : "string",
+                            "example" : "#FFFFFF"
+                        }
+                    ]
+                }
+            ],
+            "exmaple" : {
+                "objType": "cube",
+                "x": 20,
+                "y": 60,
+                "width": 40,
+                "height": 60,
+                "style": "outline",
+                "colour": "rgb(201, 100, 128)"
+            }
+        }, 
+        "square" : {
+            "objType" : "square",
+            "options" : [
+                {
+                    "name" : "x1",
+                    "type" : "number"
+                }, {
+                    "name" : "y1",
+                    "type" : "number"
+                }, {
+                    "name" : "x2",
+                    "type" : "number"
+                }, {
+                    "name" : "y2",
+                    "type" : "number"
+                }, {
+                    "name" : "colour",
+                    "type" : "RGB_merged"
+                }, {
+                    "name": "colour",
+                    "type": "RGB_merged"
+                }, {
+                    "name": "style",
+                    "type": "string",
+                    "possible": [
+                        "fill",
+                        "outline"
+                    ]
+                }, {
+                    "name": "thickness",
+                    "type": "number"
+                }
+            ]
+        }, 
+        "light" : {
+            "objType": "light",
+            "options" : [
+                {
+                    "name": "x",
+                    "type": "number"
+                }, {
+                    "name": "y",
+                    "type": "number"
+                }, {
+                    "name": "radius",
+                    "type": "number"
+                }, {
+                    "name": "colour",
+                    "type": "RGB_merged"
+                }
+            ],
+            "example" : {
+                "objType": "light",
+                "x": 120,
+                "y": 300,
+                "radius": 300,
+                "colour": {
+                    "r": 45,
+                    "g": 45,
+                    "b": 45
+                }
+            }
+        }, 
+        "background" : {
+            "objType" : "background",
+            "options" : [
+                {
+                    "name" : "colour",
+                    "type" : "RGB_Separate"
+                }
+            ]
+        }
+    }
+}

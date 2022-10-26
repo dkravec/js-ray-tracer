@@ -92,6 +92,11 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
     - fixed renderCube, now isnt missing a pixel.
     - cube outline now renders right side properly, was pushing to wrong array.
     - removed extra comments+cleaned code.
+
+### v1.0 (15.2022.10.26)
+- added /modules/modules.json and /modules/fetchModules.js
+    - modules.json has information about object types in renders. (none functional in renders) 
+
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
 
