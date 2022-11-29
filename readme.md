@@ -99,8 +99,46 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 
 ### v1.0 (16.2022.11.28)
 - added a dockerfile for hosting with cloudflare.
-
+### v1.0 (17.2022.11.28)
+- added readme info for dockerfile.
+- removed copy of config.json
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
 
 https://stackoverflow.com/questions/5300938/calculating-the-position-of-points-in-a-circle/
+
+
+
+This is Js Ray Tracer created by Daniel Kravec
+
+```
+docker build -t novapro/js_ray_tracer . && docker tag novapro/js_ray_tracer registry.xnet.com:5000/novapro/js_ray_tracer:latest && sudo docker push registry.xnet.com:5000/novapro/js_ray_tracer
+```
+
+To build Docker Image:
+```
+$ docker build -t novapro/js_ray_tracer .
+```
+To Run/Test localy:
+```
+$ docker run --name js_ray_tracer -d novapro/js_ray_tracer:latest
+```
+To Stop test (get container_id from docker 
+```
+$ docker stop <container_id>
+```
+To Login Into Registry (SHould only have to do once ever):
+```
+$ docker login registry.xnet.com:5000
+```
+To push image to registry:
+```
+$ docker tag novapro/interact_api registry.xnet.com:5000/novapro/interact_api:latest
+$ docker push registry.xnet.com:5000/novapro/interact_api
+```
+Registry Format:
+// Eg: registry.xnet.com:5000/daniel/novapro/homepage_test:latest
+
+Docker Tag Standard:
+ is the latest master master build (used for production)
+ is the latest non master branch build
