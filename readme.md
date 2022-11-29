@@ -99,9 +99,13 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 
 ### v1.0 (16.2022.11.28)
 - added a dockerfile for hosting with cloudflare.
+
 ### v1.0 (17.2022.11.28)
 - added readme info for dockerfile.
 - removed copy of config.json
+
+### v1.0 (18.2022.11.28)
+- updated dockerfile
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
 
@@ -133,8 +137,8 @@ $ docker login registry.xnet.com:5000
 ```
 To push image to registry:
 ```
-$ docker tag novapro/interact_api registry.xnet.com:5000/novapro/interact_api:latest
-$ docker push registry.xnet.com:5000/novapro/interact_api
+$ docker tag novapro/js_ray_tracer registry.xnet.com:5000/novapro/js_ray_tracer:latest
+$ docker push registry.xnet.com:5000/novapro/js_ray_tracer
 ```
 Registry Format:
 // Eg: registry.xnet.com:5000/daniel/novapro/homepage_test:latest
