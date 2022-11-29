@@ -97,6 +97,9 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 - added /modules/modules.json and /modules/fetchModules.js
     - modules.json has information about object types in renders. (none functional in renders) 
 
+### v1.0 (16.2022.11.28)
+- added a dockerfile for hosting with cloudflare.
+
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
 
