@@ -17,6 +17,6 @@ COPY . .
 
 WORKDIR /usr/src/app
 
-EXPOSE 3005 3000
+EXPOSE 3000 3005
 
 CMD [ "node", "script.js" ]

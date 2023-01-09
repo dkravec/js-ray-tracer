@@ -108,7 +108,10 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 - updated dockerfile
 
 ### v1.0 (19.2022.01.08)
-- updated dockerfile
+- updated dockerfile, EXPOSE 3005 3000
+
+### v1.0 (20.2022.01.08)
+- updated dockerfile, EXPOSE 3000 3005
 
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
@@ -120,7 +123,7 @@ https://stackoverflow.com/questions/5300938/calculating-the-position-of-points-i
 This is Js Ray Tracer created by Daniel Kravec
 
 ```
-docker build -t novapro/js_ray_tracer . && docker tag novapro/js_ray_tracer registry.xnet.com:5000/novapro/js_ray_tracer:latest && sudo docker push registry.xnet.com:5000/novapro/js_ray_tracer
+docker build -t novapro/js_ray_tracer . && docker tag novapro/js_ray_tracer registry.xnet.com:5000/novapro/js_ray_tracer:latest && docker push registry.xnet.com:5000/novapro/js_ray_tracer
 ```
 
 To build Docker Image:
