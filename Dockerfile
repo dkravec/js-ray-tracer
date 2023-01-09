@@ -16,5 +16,7 @@ RUN npm install
 COPY . .
 
 WORKDIR /usr/src/app
-EXPOSE 4995
+
+EXPOSE 3005 3000
+
 CMD [ "node", "script.js" ]

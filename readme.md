@@ -106,6 +106,10 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 
 ### v1.0 (18.2022.11.28)
 - updated dockerfile
+
+### v1.0 (19.2022.01.08)
+- updated dockerfile
+
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
 
