@@ -4,9 +4,9 @@ var ctx = canvas.getContext('2d');
 var canvasBig = document.getElementById('canvasBig');
 var ctxBig = canvasBig.getContext('2d');
 const resizevar = 80;
-var currentOption = "v11"
+var currentOption = "v11";
 var websocketOn = true;
-var renders = {}
+var renders = {};
 onLoad();
 
 var options = {
@@ -84,7 +84,10 @@ function removeFunctions() {
 
 async function collectRender() {
     if (websocketOn && renders[currentOption].websocket==true) {
-        const ws = new WebSocket(`ws://localhost:3005/render/${currentOption}`);
+        const wsURL = location.href.substring(location.protocol.length + 2);
+        console.log(wsURL);
+        const ws = new WebSocket(`ws${location.protocol.startsWith("https")?"s":""}://${wsURL}${wsURL.endsWith('/')?"":"/"}render/${currentOption}`);
+
         ws.onmessage = function (event) {
             const data = JSON.parse(event.data);
             if (data.sendType=="init") {

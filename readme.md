@@ -131,6 +131,10 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 - added websocket option to getRenders.js and options file.
 - /scr/script.js added websocket support, makes sure function supports it.
 
+### v1.0 (24.2022.01.11)
+- Properly added package-lock to gitignore.
+- Created a way swap wss and ws, and with the proper url.
+
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
 
