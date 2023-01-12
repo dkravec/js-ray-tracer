@@ -5,8 +5,10 @@ var canvasBig = document.getElementById('canvasBig');
 var ctxBig = canvasBig.getContext('2d');
 const resizevar = 80;
 var currentOption = "v11"
-
+var websocketOn = true;
+var renders = {}
 onLoad();
+
 var options = {
     "objects" : [
         "objType",
@@ -39,6 +41,9 @@ async function getOptions() {
 
     drawOptions(responseData)
     currentOption = responseData.options[responseData.options.length-1].name 
+    for (const option of responseData.options) {
+        renders[option.name] = option;
+    }
 }
 
 function drawOptions(response) {
@@ -78,14 +83,33 @@ function removeFunctions() {
 }
 
 async function collectRender() {
-    const renderReponse = await fetch(`/render/${currentOption}`, { method: 'POST'});
-    const responseData = await renderReponse.json();
-    imageRender(responseData);
-
-    console.log(responseData);
-
-    if (responseData?.timeTook) document.getElementById('time').innerText=`${responseData.timeTook}ms`
-    return console.log('fetched image');
+    if (websocketOn && renders[currentOption].websocket==true) {
+        const ws = new WebSocket(`ws://localhost:3005/render/${currentOption}`);
+        ws.onmessage = function (event) {
+            const data = JSON.parse(event.data);
+            if (data.sendType=="init") {
+                canvas.width=data.sizeX;
+                canvas.height=data.sizeY;
+                ctx = canvas.getContext('2d');
+            }
+            if (data.sendType=="final") {
+                imageRender(data.imageData);
+                console.log('fetched image');
+                if (data?.imageData?.timeTook) document.getElementById('time').innerText=`${data.imageData.timeTook}ms`
+            } else {
+                draw(data.x, data.y, data.colour);
+                console.log('fetching image');
+            }
+        };
+    }
+    else {
+        const renderReponse = await fetch(`/render/${currentOption}`, { method: 'POST'});
+        const responseData = await renderReponse.json();
+        imageRender(responseData);
+    
+        if (responseData?.timeTook) document.getElementById('time').innerText=`${responseData.timeTook}ms`
+        return console.log('fetched image');
+    }
 };
 
 function imageRender(responseData) {
@@ -99,7 +123,6 @@ function imageRender(responseData) {
 };
 
 function draw(xCoord, yCoord, ColourRGB) {
-
     ctx.fillStyle = ColourRGB;
     ctx.fillRect(xCoord, yCoord, 1, 1);
 };

@@ -1,10 +1,11 @@
 const express = require('express');
+const expressWs = require('express-ws')
+
 const http = require('http');
 const cors = require('cors');
 const PORT = 3005;
 const app = express();
-const render = require('./render')
-const options = require('./options')
+expressWs(app);
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -26,6 +27,9 @@ app.get('/script.js', (req, res) => {
 app.get('/style.css', (req, res) => {
     res.sendFile(__dirname + '/scr/style.css')
 })
+
+const render = require('./render')
+const options = require('./options')
 
 app.use('/render', render);
 app.use('/options', options);

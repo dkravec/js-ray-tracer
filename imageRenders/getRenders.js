@@ -23,9 +23,9 @@ module.exports = () => {
                 data.table.push({
                     'name': newname, 
                     'func': obj[newname], 
-                    'options': obj.options ? obj.options : null
+                    'options': obj.options ? obj.options : null,
+                    'websocket': obj.websocket ? obj.websocket : false
                 });
-                console.log(data.table)
             };
         };
     };

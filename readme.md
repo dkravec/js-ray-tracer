@@ -102,19 +102,34 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 
 ### v1.0 (17.2022.11.28)
 - added readme info for dockerfile.
-- removed copy of config.json
+- removed copy of config.json.
 
 ### v1.0 (18.2022.11.28)
-- updated dockerfile
+- updated dockerfile.
 
 ### v1.0 (19.2022.01.08)
-- updated dockerfile, EXPOSE 3005 3000
+- updated dockerfile, EXPOSE 3005 3000.
 
 ### v1.0 (20.2022.01.08)
-- updated dockerfile, EXPOSE 3000 3005
+- updated dockerfile, EXPOSE 3000 3005.
 
 ### v1.0 (21.2022.01.08)
-- updated dockerfile, EXPOSE 3005 3000 again
+- updated dockerfile, EXPOSE 3005 3000 again.
+
+### v1.0 (22.2022.01.08)
+- updated dockerfile, EXPOSE 3005.
+
+### v1.0 (23.2022.01.11)
+- Created v19 render.
+- Now has a websocket to send live updates of render. (will be able to eventually turn off).
+- The objects can now appear in random places.
+- Added package-lock to gitignore.
+- in script.js
+    - created websocket requirements.
+    - moved import of render and options file.
+- added websocket route to /render.
+- added websocket option to getRenders.js and options file.
+- /scr/script.js added websocket support, makes sure function supports it.
 
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/

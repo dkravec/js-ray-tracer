@@ -6,12 +6,13 @@ router.get('/', async (req, res) => {
     const allOptions = []
 
     for (const option of Info) {
-        allOptions.push({name: option.name, render: option.func, options: option.options? option.options : null})
+        allOptions.push({name: option.name, render: option.func, options: option.options? option.options : null, websocket: option.websocket ? option.websocket : false})
     };
    
     var data = {
         options: allOptions
     }
+
     if (!data) res.status(404).send({ 'error' : `Something went wrong...`})
     return res.status(200).send(data);
 });
