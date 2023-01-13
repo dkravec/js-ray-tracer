@@ -1,5 +1,4 @@
 # Ray Tracer
-
 Created by Daniel Kravec, on July 9th, 2022
 
 
@@ -135,14 +134,16 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 - Properly added package-lock to gitignore.
 - Created a way swap wss and ws, and with the proper url.
 
+### v1.0 (25.2022.01.12)
+- Started v20, will be focused on 3D objects.
+- when saving an image, site has grey background.
+
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
 
 https://stackoverflow.com/questions/5300938/calculating-the-position-of-points-in-a-circle/
 
 
-
-This is Js Ray Tracer created by Daniel Kravec
 
 ```
 docker build -t novapro/js_ray_tracer . && docker tag novapro/js_ray_tracer registry.xnet.com:5000/novapro/js_ray_tracer:latest && docker push registry.xnet.com:5000/novapro/js_ray_tracer

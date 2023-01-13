@@ -457,7 +457,6 @@ function renderBackground(background, image) {
     return backgroundArr;
 }
 
-
 function newColour(lastColour, i) {
     const step1 = lastColour*i;
     return colourNumber(step1);
