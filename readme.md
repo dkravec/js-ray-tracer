@@ -148,6 +148,12 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 - bugs: (v20) 
     - missing bottom courner of cube (has had this problem before)
 
+### v1.0 (27.2022.01.13)
+- Changed resolution to 400x400.
+- Removed commented code
+- Each side now have a different colour, easier for debugging.
+- Speaking of bugs, fixed b26 bug.
+
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
 

@@ -7,42 +7,25 @@ async function v20(data, ws) {
     if (ws) wsenabled = true;
     returnData = {
         timeTook: 13,
-        sizeX: 200,
-        sizeY: 200,
+        sizeX: 400,
+        sizeY: 400,
         image: [ ],
         imageNew: {}
     };
     const startTime = checktime();
 
-    const scene = new Scene({resolutionX: 200, resolutionY: 200});
-    const camera = new Camera({ x:40, y: 4, z: 6, xLength: 200, yLength: 200 });
+    const scene = new Scene({resolutionX: 400, resolutionY: 400});
+    const camera = new Camera({ x:40, y: 4, z: 6, xLength: 400, yLength: 400 });
 
-    const cube = await scene.newObject({type: "cube", options: {x: 20, y: 30, z: 6, xLength: 10, yLength: 10}});
+    const cube = await scene.newObject({type: "cube", options: {x: 20, y: 30, z: 6, xLength: 30, yLength: 30}});
     const cubePixels = await cube.renderCube();
      
     for (const pixel of cubePixels) {
-        const inScene = await camera.isInScene(pixel);
-// console.log(inScene)
-        // if (inScene) returnData.image.push(pixel)
-
+        await camera.isInScene(pixel);
     }
 
     returnData.image = camera.scnArr;
     console.log(camera.scnArr.length)
-
-    // console.log(returnData)
-    // console.log(cubePixels)
-    // scene.objects[0];
-    // console.log(scene)
-    // console.log(camera)
-    // camera.setXLength(200);
-    // console.log(scene)
-    // console.log(camera)
-
-    // const camera = new Camera({ x: 2, y: 4, z: 6, xLength: 10, yLength: 10 });
-    // camera.printInfo();
-    // const cube1 = await renderCube({x: 20, y: 20, z: 20, size: 20, colour: "black"})
-    // console.log(cube1)
 
     const finishTime = checktime();
   
@@ -163,22 +146,6 @@ class Camera {
         this.leftX = x - xLength / 2;
         this.rightX = x + xLength / 2;
         this.scnArr = []
-        // this.topLeft = {
-        //     x: x - xLength / 2,
-        //     y: y + yLength / 2
-        // }
-        // this.topRight = {
-        //     x: x + xLength / 2,
-        //     y: y + yLength / 2
-        // }
-        // this.bottomLeft = {
-        //     x: x - xLength / 2,
-        //     y: y - yLength / 2
-        // }
-        // this.bottomRight= {
-        //     x: x + xLength / 2,
-        //     y: y - yLength / 2
-        // }
     };
 
     printInfo() {
@@ -186,32 +153,10 @@ class Camera {
     };
 
     async isInScene({ x, y, z, colour}) {
-        // top left
-        // if (
-        //     x < this.topLeft.x ||
-        //     y > this.topLeft.y
-        // ) return false
-        // top right
-        // else if (
-        //     x >
-        // ) return false
-
         if (x < this.leftX) return false;
         else if (x > this.rightX) return false;
         else if (y > this.topY) return false;
         else if (y < this.bottomY) return false;
-
-        // check top
-        // if (x < this.topLeft) return false;
-        // else if (x > this.topRight) return false;
-        // else if (y < this.topLeft) return false;
-        // else if (y > this.topRight) return false;
-        // check bottom
-        // else if (x < this.bottomLeft) return false;
-        // else if (x > this.bottomRight) return false;
-        // else if (y < this.bottomLeft) return false;
-        // else if (y < this.bottomRight) return false;
-        // check z later
         else {
             this.scnArr.push({ x, y, z, colour})
             return true
@@ -262,7 +207,8 @@ class Cube {
         const radiusY = this.yLength / 2;
         const radiusZ = this.zLength / 2;
 
-        const colour = "rgb(12, 123, 145)" //[12, 123, 145];
+        var colour = "rgb(12, 123, 145)"; //[12, 123, 145];
+        // light blue
 
         // front and back (x and y)
         for (let ix = (this.x-radiusX); ix < (this.x+radiusX); ix++) {
@@ -270,78 +216,61 @@ class Cube {
                 const zF = this.z-radiusZ;
                 const zB = this.z+radiusZ;
                 // front
-                // pixels[`${ix}_${iy}_${zF}`] = {
-                //     x: ix, y: iy, z: zF,
-                //     colour
-                // };
                 arr.push({
                     x: ix, y: iy, z: zF,
                     colour
-                })
+                });
                 // back
-                // pixels[`${ix}_${iy}_${zB}`] = {
-                //     x: ix, y: iy, z: zB,
-                //     colour
-                // };
                 arr.push({
                     x: ix, y: iy, z: zB,
                     colour
-                })
+                });
             };
         };
 
+        var colour = "rgb(42, 123, 24)"; //[12, 123, 145];
+        // green
+
         // top bottom (x and z)
-        for (let ix = (this.x-radiusX); ix < (this.x+radiusX); ix++) {
+        for (let ix = (this.x-radiusX); ix < (this.x+radiusX)+1; ix++) {
             for (let iz = (this.y-radiusZ); iz < (this.z+radiusZ); iz++) {
                 const yB = this.y-radiusY;
                 const yT = this.y+radiusY;
                 //  bottom
-                // pixels[`${ix}_${yB}_${iz}`] = {
-                //     x: ix, y: yB, z: iz,
-                //     colour
-                // };
                 arr.push({
                     x: ix, y: yB, z: iz,
                     colour
-                })
+                });
+
                 // top
-                // pixels[`${ix}_${yT}_${iz}`] = {
-                //     x: ix, y: yT, z: iz,
-                //     colour
-                // };
                 arr.push({
                     x: ix, y: yT, z: iz,
                     colour
-                })
-            }
+                });
+            };
         };
         
+        var colour = "rgb(25, 62, 214)" //[12, 123, 145];
+        // dark blue
+
         // left and right  (y and z)
         for (let iy = (this.y-radiusY); iy < (this.y+radiusY); iy++) {
             for (let iz = (this.y-radiusZ); iz < (this.z+radiusZ); iz++) {
                 const xL = this.x-radiusX;
                 const xR = this.x+radiusX;
                 // left
-                // pixels[`${xL}_${iy}_${iz}`] = {
-                //     x: xL, y: iy, z: iz,
-                //     colour
-                // };
                 arr.push({
                     x: xL, y: iy, z: iz,
                     colour
-                })
+                });
 
                 // right
-                // pixels[`${xR}_${iy}_${iz}`] = {
-                //     x: xR, y: iy, z: iz,
-                //     colour
-                // };
                 arr.push({
                     x: xR, y: iy, z: iz,
                     colour
-                })
-            }
-        }
+                });
+            };
+        };
 
         this.arr = arr;
         return arr;
@@ -355,5 +284,6 @@ class Cube {
 const options = {
 
 }
+
 const websocket = false;
 module.exports={v20, options, websocket};
