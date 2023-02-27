@@ -154,6 +154,9 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 - Each side now have a different colour, easier for debugging.
 - Speaking of bugs, fixed b26 bug.
 
+### v1.0 (28.2022.02.25)
+- started new rendering of cube, hopefully more efficent and will work better than previously
+
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
 

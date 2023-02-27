@@ -17,7 +17,14 @@ async function v20(data, ws) {
     const scene = new Scene({resolutionX: 400, resolutionY: 400});
     const camera = new Camera({ x:40, y: 4, z: 6, xLength: 400, yLength: 400 });
 
-    const cube = await scene.newObject({type: "cube", options: {x: 20, y: 30, z: 6, xLength: 30, yLength: 30}});
+    const cube = await scene.newObject({type: "cube", options: {x: 80, y: 80, z: 6, xLength: 60, yLength: 60}});
+    // points
+    // x
+    // 50, 110
+
+    // y
+    // 50, 110
+    
     const cubePixels = await cube.renderCube();
      
     for (const pixel of cubePixels) {
@@ -210,6 +217,96 @@ class Cube {
         var colour = "rgb(12, 123, 145)"; //[12, 123, 145];
         // light blue
 
+        // courners
+        // bottom
+        const courners = [
+            {
+                x: this.x-radiusX, y: this.y-radiusY, z: this.z-radiusZ,
+                colour
+            }, {
+                x: this.x+radiusX, y: this.y-radiusY, z: this.z-radiusZ,
+                colour
+            }, {
+                x: this.x-radiusX, y: this.y+radiusY, z: this.z-radiusZ,
+                colour
+            }, {
+                x: this.x+radiusX, y: this.y-radiusY, z: this.z-radiusZ,
+                colour
+            }, {
+                x: this.x-radiusX, y: this.y-radiusY, z: this.z+radiusZ,
+                colour
+            }, {
+                x: this.x+radiusX, y: this.y-radiusY, z: this.z+radiusZ,
+                colour
+            }, {
+                x: this.x-radiusX, y: this.y+radiusY, z: this.z+radiusZ,
+                colour
+            }, {
+                x: this.x+radiusX, y: this.y+radiusY, z: this.z+radiusZ,
+                colour
+            }
+        ];
+
+
+        for (var i=0; i<8; i++) {// 0 until 7
+            console.log("i "+i)
+            for (var size=0; size<10; size++) {
+                arr.push({
+                    x: courners[i].x+size,
+                    y: courners[i].y,
+                    z: courners[i].z,
+                    colour
+                })
+                arr.push({
+                    x: courners[i].x,
+                    y: courners[i].y+size,
+                    z: courners[i].z,
+                    colour
+                })
+                arr.push({
+                    x: courners[i].x,
+                    y: courners[i].y,
+                    z: courners[i].z+size,
+                    colour
+                })
+            }
+            // arr.push(courners[i]);
+            // connect
+            // courner 1 - courner 2
+            // counrer 1 - courner 
+            for (var j=0; j<8; j++) {
+                console.log(`j `+j)
+                // /*
+                if (courners[i].x == courners[j].y) {
+                    for (let iz=0; iz<this.zLength; iz++) {
+                        arr.push({
+                            x: courners[i].x, y: courners[i].y, z: iz,
+                            colour
+                        }); 
+                    }
+                };
+                if (courners[i].x == courners[j].z) {
+                    for (let iy=0; iy<this.yLength; iy++) {
+                        arr.push({
+                            x: courners[i].x, y: iy, z: courners[i].z,
+                            colour
+                        }); 
+                    }
+                };
+                if (courners[i].y == courners[j].z) {
+                    for (let ix=0; ix<this.xLength; ix++) {
+                        arr.push({
+                            x: ix, y: courners[i].y, z: courners[i].z,
+                            colour
+                        }); 
+                    }
+                };
+                // */
+
+            }
+        }
+        // then render inside of area (-1 on each of the lines)
+        /*
         // front and back (x and y)
         for (let ix = (this.x-radiusX); ix < (this.x+radiusX); ix++) {
             for (let iy = (this.y-radiusY); iy < (this.y+radiusY); iy++) {
@@ -271,8 +368,9 @@ class Cube {
                 });
             };
         };
-
+*/
         this.arr = arr;
+        console.log(arr)
         return arr;
     };
 
