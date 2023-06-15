@@ -165,6 +165,14 @@ https://stackoverflow.com/questions/5300938/calculating-the-position-of-points-i
 // p3 colour gamit
 https://webkit.org/blog/12058/wide-gamut-2d-graphics-using-html-canvas/
 
+
+## How to run
+run locally with 
+```
+node script.js
+```
+
+or prod running with docker
 ```
 docker build -t novapro/js_ray_tracer . && docker tag novapro/js_ray_tracer registry.xnet.com:5000/novapro/js_ray_tracer:latest && docker push registry.xnet.com:5000/novapro/js_ray_tracer
 ```
