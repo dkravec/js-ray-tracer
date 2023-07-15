@@ -1,6 +1,16 @@
 # Ray Tracer
 Created by Daniel Kravec, on July 9th, 2022
 
+## About 
+This project is an experiment to play around with rendering images via programming. Loops and objects and otherwise. A few also have websocket support, where it will slowly show you what it is rendering. Currently CPU rendering, but could maybe attempt GPU rendering. 
+
+The generation is done on the backend, and the frontend simple draws what it renders with the canvas, and looping over a given array of pixels.
+
+## how to use
+You can view a hosted version of the site here: http://test.novapro.net/
+
+Select the version you want under options, then press "Press here" on the top left of the website. You can also save an image by pressing "Save image", which will open a new tab, then you can save as and image.
+
 
 ## Version history
 ### v1.0 (1.2022.07.09)
@@ -156,6 +166,12 @@ Problems, render can run out of memory to render. (maybe use c# instead for calu
 
 ### v1.0 (28.2022.02.25)
 - started new rendering of cube, hopefully more efficent and will work better than previously
+
+### v1.0 (29.2023.06.15)
+- added readme on how to run locally
+
+### v1.0 (30.2023.07.15)
+- added readme for b29 and a bit extra data About the project
 
 ### Good Resources To Use
 https://tmcw.github.io/literate-raytracer/
